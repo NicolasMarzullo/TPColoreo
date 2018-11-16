@@ -1,43 +1,53 @@
 package Generador;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class RegularAdyacencia extends Generador {
 
-	private double porcentajeAdyacencia;
-
-	public RegularAdyacencia(int cantidadNodos, int porc) {
+	public RegularAdyacencia(int cantidadNodos, double porcentajeAdyacencia) {
 		super(cantidadNodos);
-		this.porcentajeAdy = (double) porc / 100;
+		this.porcentajeAdy = porcentajeAdyacencia;
 	}
 
 	@Override
-	public void generar() {
-		List<Integer> listJ = new ArrayList<>();
+	public void generar() throws Exception {
 
-		double gradoPosible = Math.round(this.porcentajeAdy * (this.cantidadNodos - 1));
-		for (int j = 0; j < this.cantidadNodos; j++) {
-			listJ.add(j);
+		// Formula mágica del pofe.
+		double gradoPosible = Math.round((this.porcentajeAdy / 100) * (this.cantidadNodos - 1));
+
+		int corteDeUnionesConSalteo, vueltas = 1, corteDelaCruz, j;
+
+		if (this.cantidadNodos % 2 != 0 && gradoPosible % 2 != 0) {
+			throw new Exception(
+					"No es posible, para un grafo con una cantidad de nodos impares, generar un grafo regular de grado impar.");
 		}
 
-		for (int i = 0; i < this.cantidadNodos; i++) {
-			Collections.shuffle(listJ);
-			
-			for (int k = 0; k < gradoPosible; k++) {
-				System.out.println(i + "  " + k);
-				if (i == listJ.get(k) || this.matriz.get(i, listJ.get(k)) == 1) {
-					Collections.shuffle(listJ);
-					k--;
-					continue;
-				}
+		if (gradoPosible >= this.cantidadNodos) {
+			throw new Exception(
+					"No se puede generar un grafo regular con el grado mayor o igual a la cantidad de nodos");
+		}
 
-				this.matriz.set(i, listJ.get(k), 1);
+		corteDeUnionesConSalteo = (int) (gradoPosible / 2);
+
+		// El salto siempre es i+1;
+		while (vueltas <= corteDeUnionesConSalteo) {
+			for (int i = 0; i < this.cantidadNodos; i++) {
+				j = vueltas + i;
+				if (j >= this.cantidadNodos) {
+					j = j % this.cantidadNodos;
+				}
+				this.matriz.set(i, j, 1);
+			}
+			vueltas++;
+		}
+
+		corteDelaCruz = this.cantidadNodos / 2;
+
+		// Si es impar le pongo "la cruz".
+		if (gradoPosible % 2 != 0) {
+			for (int i = 0; i < corteDelaCruz; i++) {
+				j = i + corteDelaCruz;
+				this.matriz.set(i, j, 1);
 			}
 		}
-
-		super.porcentajeAdy = gradoPosible / (this.cantidadNodos - 1);
 
 	}
 

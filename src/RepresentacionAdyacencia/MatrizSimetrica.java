@@ -19,7 +19,6 @@ public class MatrizSimetrica {
 	public int get(int fila, int columna) {
 
 		if (columna == fila) {
-			System.out.println("a donde vas ");
 			return -1;
 		}
 
