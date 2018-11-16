@@ -39,6 +39,7 @@ public class Regular extends Generador {
 
 		corteDelaCruz = this.cantidadNodos /2;
 		
+		//Si es impar le pongo "la cruz".
 		if (this.gradoPretendido % 2 != 0) {
 			for (int i = 0; i < corteDelaCruz; i++) {
 				j = i + corteDelaCruz;

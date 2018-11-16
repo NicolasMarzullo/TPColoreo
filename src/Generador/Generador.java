@@ -50,6 +50,7 @@ public abstract class Generador {
 		}
 		this.cantidadAristas = sumaGrados / 2;
 		this.porcentajeAdy = (double) this.cantidadAristas / (this.cantidadNodos * (this.cantidadNodos - 1) / 2); // GAUS
+		this.porcentajeAdy *=100; //Lo dejo en porcentaje
 	}
 
 	public int cantidadAristasTotal() {
