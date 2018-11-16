@@ -3,7 +3,6 @@ package tests;
 import org.junit.Test;
 
 import Generador.Generador;
-import Generador.Probabilidad;
 import Generador.RegularAdyacencia;
 import Generador.Regular;
 
@@ -25,7 +24,7 @@ public class GrafoTests {
 	
 	@Test
 	public void regularTest() {
-		Generador gen = new Regular(6, 2);
+		Generador gen = new Regular(6, 3);
 		try {
 			gen.generar();
 		} catch (Exception e) {

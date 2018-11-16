@@ -11,8 +11,7 @@ public class Regular extends Generador {
 
 	@Override
 	public void generar() throws Exception {
-		int corte, vueltas = 0, j;
-		boolean impar = false;
+		int corteDeUnionesConSalteo, vueltas = 1, corteDelaCruz, j;
 
 		if (this.cantidadNodos % 2 != 0 && this.gradoPretendido % 2 != 0) {
 			throw new Exception(
@@ -24,29 +23,25 @@ public class Regular extends Generador {
 					"No se puede generar un grafo regular con el grado mayor o igual a la cantidad de nodos");
 		}
 
-		if (this.gradoPretendido % 2 == 0) {
-			corte = this.gradoPretendido / 2;
-		} else {
-			corte = (this.gradoPretendido / 2) - 1;
-			impar = true;
-		}
+		corteDeUnionesConSalteo = this.gradoPretendido / 2;
 
 		// El salto siempre es i+1;
-		while (vueltas < corte) {
+		while (vueltas <= corteDeUnionesConSalteo) {
 			for (int i = 0; i < this.cantidadNodos; i++) {
-				j = vueltas + i + 1;
+				j = vueltas + i;
 				if (j >= this.cantidadNodos) {
-					j =  j - i - vueltas - 1; //Hay que encontrarle la vuelta a esto.
+					j = j % this.cantidadNodos;
 				}
 				this.matriz.set(i, j, 1);
 			}
 			vueltas++;
 		}
 
-		int corteDeLaCruz = this.cantidadNodos / 2;
-		if (impar) {
-			for (int i = 0; i < corteDeLaCruz; i++) {
-				j = i + corteDeLaCruz;
+		corteDelaCruz = this.cantidadNodos /2;
+		
+		if (this.gradoPretendido % 2 != 0) {
+			for (int i = 0; i < corteDelaCruz; i++) {
+				j = i + corteDelaCruz;
 				this.matriz.set(i, j, 1);
 			}
 		}
