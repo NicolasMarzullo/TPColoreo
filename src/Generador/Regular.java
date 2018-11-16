@@ -6,33 +6,32 @@ import java.util.List;
 
 public class Regular extends Generador {
 
-	private int cantidad;
+	private int gradoPretendido;
 
-	public Regular(int cantidadNodos, int cantidad) {
+	public Regular(int cantidadNodos, int gradoPretendido) {
 		super(cantidadNodos);
-		this.cantidad = cantidad;
+		this.gradoPretendido = gradoPretendido;
 	}
 
 	@Override
-	public void generar() {
+	public void generar() throws Exception {
 
 		List<Integer> lista = new ArrayList<Integer>();
 		for (int i = 0; i < cantidadNodos; i++) {
 			lista.add(i);
 		}
-
-		for (int i = 0; i < this.cantidadNodos; i++) {
-			
-			for (int j = 0; j < this.cantidad; j++) {
-				int x = lista.get(j);
-				if (x == i) {
-					lista.get(j+1);
-				}
-				this.matriz.set(i, x, 1);
-			}
-			Collections.shuffle(lista);
+		
+		if(this.cantidadNodos %2 != 0 && this.gradoPretendido %2 != 0) {
+			throw new Exception("No es posible, para un grafo con una cantidad de nodos impares, generar un grafo regular de grado impar.");
 		}
-
+		
+		if(this.gradoPretendido >= this.cantidadNodos) {
+			throw new Exception("No se puede generar un grafo regular con el grado mayor o igual a la cantidad de nodos");
+		}
+		
+		
+		
+		
 	}
 
 }

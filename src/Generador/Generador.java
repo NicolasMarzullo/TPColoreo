@@ -20,7 +20,7 @@ public abstract class Generador {
 		this.cantidadNodos = cantidadNodos;
 	}
 
-	public abstract void generar();
+	public abstract void generar() throws Exception;
 
 	public void calcularParametrosDelGrafo() {
 		int cont = 0;
