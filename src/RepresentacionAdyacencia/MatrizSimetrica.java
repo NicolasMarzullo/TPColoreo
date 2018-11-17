@@ -1,6 +1,5 @@
 package RepresentacionAdyacencia;
 
-import java.util.Arrays;
 
 public class MatrizSimetrica {
 	private int cantidadNodos;
@@ -31,7 +30,6 @@ public class MatrizSimetrica {
 	public void set(int fila, int columna, int val) {
 
 		if (columna == fila) {
-			System.out.println("a donde vas ");
 			return;
 		}
 

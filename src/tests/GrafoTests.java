@@ -25,7 +25,7 @@ public class GrafoTests {
 	
 	@Test
 	public void porcentajeTest() {
-		Generador gen = new Porcentaje(5, 80);
+		Generador gen = new Porcentaje(600, 80);
 		
 		try {
 			gen.generar();
