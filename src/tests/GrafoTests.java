@@ -3,10 +3,12 @@ package tests;
 import org.junit.Test;
 
 import Generador.Generador;
+import Generador.Npartito;
+import Generador.Porcentaje;
 import Generador.Probabilidad;
 import Generador.Regular;
 import Generador.RegularAdyacencia;
-import Generador.Porcentaje;
+
 public class GrafoTests {
 
 	@Test
@@ -59,6 +61,19 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
+	
+	@Test
+	public void NpartitoTest() {
+		Generador gen = new Npartito(12, 3);
+		try {
+			gen.generar();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		gen.calcularParametrosDelGrafo();
+		System.out.println(gen);
+	}
+	
 	
 	
 	
