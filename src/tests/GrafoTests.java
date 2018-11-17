@@ -14,7 +14,7 @@ public class GrafoTests {
 	@Test
 	public void probabilidadTest() {
 		Generador gen = new Probabilidad(100, 75);
-		
+
 		try {
 			gen.generar();
 		} catch (Exception e) {
@@ -23,12 +23,11 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
-	
-	
+
 	@Test
 	public void porcentajeTest() {
 		Generador gen = new Porcentaje(600, 80);
-		
+
 		try {
 			gen.generar();
 		} catch (Exception e) {
@@ -37,7 +36,7 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
-	
+
 	@Test
 	public void regularTest() {
 		Generador gen = new Regular(10000, 9999);
@@ -49,7 +48,7 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
-	
+
 	@Test
 	public void regularAdyacenciaTest() {
 		Generador gen = new RegularAdyacencia(10000, 90);
@@ -61,10 +60,10 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
-	
+
 	@Test
 	public void NpartitoTest() {
-		Generador gen = new Npartito(12, 3);
+		Generador gen = new Npartito(15, 4);
 		try {
 			gen.generar();
 		} catch (Exception e) {
@@ -73,9 +72,5 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
-	
-	
-	
-	
-}
 
+}

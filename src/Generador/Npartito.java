@@ -15,10 +15,11 @@ public class Npartito extends Generador {
 	public void generar() throws Exception {
 		LinkedList<Integer> nodos = new LinkedList<>();
 		LinkedList<Integer> nodosActuales = new LinkedList<>();
-		int cantNodosPorParticion, cantDeParticionesUnidas = 0, k;
-		boolean hayParticionConUnoMas = false;
+		LinkedList<Integer> particiones = new LinkedList<>();
+		int cantNodosPorParticion, cantDeParticionesUnidas = 0, k, resto;
 
 		cantNodosPorParticion = this.cantidadNodos / this.particiones;
+		resto = this.cantidadNodos % this.particiones;
 
 		// Agrego todos los nodos
 		for (int i = 0; i < this.cantidadNodos; i++) {
@@ -26,28 +27,36 @@ public class Npartito extends Generador {
 		}
 		// Los mezclo
 		Collections.shuffle(nodos);
+
 		// ELIMINAR, ES PARA REVISAR QUE ANDE BIEN
 		System.out.println("----LISTA----");
 		for (int i = 0; i < nodos.size(); i++) {
 			System.out.println(nodos.get(i));
 		}
 
-		if (this.cantidadNodos % this.particiones != 0) {
-			hayParticionConUnoMas = true;
-			cantNodosPorParticion++;
+		// Particiones iguales
+		if (resto != 0) {
+			for (int i = 0; i < resto; i++) {
+				particiones.add(cantNodosPorParticion + 1);
+			}
+		}
+
+		// Particion iguales restantes
+		for (int i = 0; i < this.particiones % resto; i++) {
+			particiones.addLast(cantNodosPorParticion);
 		}
 
 		while (cantDeParticionesUnidas != this.particiones) {
 			// Agrego los nodos actuales a una lista nueva y los saco de la otra lista
 			k = 0;
-			while (k < cantNodosPorParticion) {
+			while (k < particiones.getFirst()) {
+
 				nodosActuales.add(nodos.getFirst());
 				nodos.removeFirst();
 				k++;
 			}
 
-			if (hayParticionConUnoMas) // Una sola particion va a tener uno de mas, apago la bandera
-				hayParticionConUnoMas = false;
+			particiones.removeFirst(); // Particion ya usada.
 
 			// Uno los nodos de una particion contra todos los otros nodos
 			for (int i = 0; i < nodosActuales.size(); i++) {
