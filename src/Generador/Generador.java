@@ -1,5 +1,8 @@
 package Generador;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 import RepresentacionAdyacencia.MatrizSimetrica;
@@ -50,11 +53,25 @@ public abstract class Generador {
 		}
 		this.cantidadAristas = sumaGrados / 2;
 		this.porcentajeAdy = (double) this.cantidadAristas / (this.cantidadNodos * (this.cantidadNodos - 1) / 2); // GAUS
-		this.porcentajeAdy *=100; //Lo dejo en porcentaje
+		this.porcentajeAdy *= 100; // Lo dejo en porcentaje
 	}
 
 	public int cantidadAristasTotal() {
 		return (int) (this.cantidadNodos * (this.cantidadNodos - 1) / 2);
+	}
+
+	public void escribirEnArchivo(String path) throws FileNotFoundException {
+		File archivo = new File(path);
+		PrintWriter salida = new PrintWriter(archivo);
+		salida.print(this.cantidadNodos + " " + this.cantidadAristas + " " + this.porcentajeAdy + " " + this.gradoMax
+				+ " " + this.gradoMin);
+		for (int i = 0; i < this.cantidadNodos; i++) {
+			for (int j = 0; j < this.cantidadNodos; j++) {
+				if (this.matriz.get(i, j) == 1) {
+					salida.println(i + " " + j);
+				}
+			}
+		}
 	}
 
 	@Override
