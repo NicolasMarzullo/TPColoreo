@@ -90,7 +90,7 @@ public class GrafoNPND {
 				}
 
 				if (loPuedoPintarDelColorActual) {
-					grafoColoreado.get(nodo.id).pintar(colorActual);
+					nodo.pintar(colorActual);
 					nodosPintados++;
 				}
 			}
