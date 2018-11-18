@@ -65,7 +65,7 @@ public class GrafoNPND {
 
 		List<Nodo> grafoColoreado = new ArrayList<>();
 		for (int i = 0; i < this.cantidadDeNodos; i++) {
-			grafoColoreado.add(new Nodo(i)); // Creo un nuevo grafo
+			grafoColoreado.add(new Nodo(this.nodos.get(i).id)); // Creo un nuevo grafo
 		}
 
 		// Uso algoritmo que colorea todo lo que puede con un color
