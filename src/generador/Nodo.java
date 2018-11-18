@@ -6,9 +6,9 @@ public class Nodo {
 	private int color;
 	
 	
-	public Nodo(int id, int color) {
+	public Nodo(int id) {
 		this.id = id;
-		this.color = color;
+		this.color = 0;
 	}
 	
 	
