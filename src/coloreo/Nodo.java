@@ -11,6 +11,9 @@ public class Nodo {
 		this.color = 0;
 	}
 	
+	public void pintar(int color) {
+		this.color = color;
+	}
 	
 	
 }

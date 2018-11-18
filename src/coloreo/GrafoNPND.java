@@ -1,6 +1,7 @@
 package coloreo;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import generador.Generador;
@@ -24,6 +25,21 @@ public class GrafoNPND {
 	}
 
 	public SalidaColoreo colorear(List<Integer> secuenciaDeRecorrido) {
+		// Uso algoritmo que pinta nodo por nodo (una sola pasada).
+		List<Integer> coloresUsados = new LinkedList<>();
+		boolean pintar = false;
+		int cantNodosPintados = 0, colorActual = 1;
+
+		for (Integer nodo1 : secuenciaDeRecorrido) {
+			for (Nodo nodo2 : this.nodos) {
+				if (this.matrizAdyacencia.get(nodo1, nodo2.id) == 1) {
+					//veo de qué color lo pinto
+					
+				}
+
+			}
+		}
+
 		return new SalidaColoreo(this.nodos, 5);
 	}
 
