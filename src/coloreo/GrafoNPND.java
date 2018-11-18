@@ -43,7 +43,6 @@ public class GrafoNPND {
 		}
 
 		for (int k = 0; k < this.cantidadDeNodos; k++) {
-			int grado = 0;
 			Nodo nodo = this.nodos.get(k);
 			for (int j = 0; j < this.cantidadDeNodos; j++) {
 				if (this.matrizAdyacencia.get(nodo.id, j) == 1) {
@@ -91,13 +90,10 @@ public class GrafoNPND {
 				}
 			}
 
-			colorActual++;// ya di una vuelta
+			colorActual++;// Ya di una vuelta
 			loPuedoPintarDelColorActual = true;
-
 		}
-
-		this.cantidadDeColoresCorridaActual = colorActual - 1;
-
+		this.cantidadDeColoresCorridaActual = colorActual;
 	}
 
 	public void colorearSecuencial(int cantidadDeVecesACorrer) {
