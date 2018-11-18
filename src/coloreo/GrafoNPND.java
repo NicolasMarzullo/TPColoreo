@@ -160,9 +160,10 @@ public class GrafoNPND {
 	public void generarEstadisticas(String algoritmo) throws FileNotFoundException {
 		File archivo = new File(this.nombreDeGrafo + " " + algoritmo);
 		PrintWriter salida = new PrintWriter(archivo);
-		salida.println(this.cantidadMejorDeColores + "  " + this.numeroDeCorridaMejorCantidadColores);
+		salida.println("Mejor cantidad de Colores: " + this.cantidadMejorDeColores + "  " + "Corrida en el que salio: "
+				+ this.numeroDeCorridaMejorCantidadColores);
 		for (int i = 0; i < resultadoDeCorrida.length; i++) {
-			salida.println("Cantidad de colores utilizados: " + (i) + "Cantidad de veces que se uso: "
+			salida.println("Cantidad de colores utilizados: " + (i + 1) + " " + "Cantidad de veces que se uso: "
 					+ this.resultadoDeCorrida[i]);
 		}
 		salida.close();

@@ -65,6 +65,7 @@ public abstract class Generador {
 		PrintWriter salida = new PrintWriter(archivo);
 		salida.print(this.cantidadNodos + " " + this.cantidadAristas + " " + this.porcentajeAdy + " " + this.gradoMax
 				+ " " + this.gradoMin);
+		salida.println();
 		for (int i = 0; i < this.cantidadNodos; i++) {
 			for (int j = 0; j < this.cantidadNodos; j++) {
 				if (this.matriz.get(i, j) == 1) {
