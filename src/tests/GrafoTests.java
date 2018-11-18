@@ -66,11 +66,13 @@ public class GrafoTests {
 		Generador gen = new Npartito(15, 4);
 		try {
 			gen.generar();
+			gen.calcularParametrosDelGrafo();
+			System.out.println(gen);
+			gen.escribirEnArchivo("Prueba");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		gen.calcularParametrosDelGrafo();
-		System.out.println(gen);
+		
 	}
 
 }
