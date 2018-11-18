@@ -1,11 +1,7 @@
 package coloreo;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Collections;
 import java.util.List;
-
-import generador.Generador;
 import representacionAdyacencia.MatrizSimetrica;
 
 public class GrafoNPND {
@@ -29,10 +25,6 @@ public class GrafoNPND {
 
 	}
 
-	public SalidaColoreo colorear() {
-		return null;
-	}
-
 	public void colorearSecuencial(int cantidadDeVecesACorrer) {
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
@@ -45,23 +37,28 @@ public class GrafoNPND {
 		}
 	}
 
-	public SalidaColoreo colorear(List<Integer> secuenciaDeRecorrido) {
+	public SalidaColoreo colorear() {
 		// Uso algoritmo que pinta nodo por nodo (una sola pasada).
-		List<Integer> coloresUsados = new LinkedList<>();
-		boolean pintar = false;
-		int cantNodosPintados = 0, colorActual = 1;
-
-		for (Integer nodo1 : secuenciaDeRecorrido) {
+		int colorActual = 1;
+		int colorMax = 0;
+		
+		for (Nodo nodo1 : this.nodos) {
 			for (Nodo nodo2 : this.nodos) {
-				if (this.matrizAdyacencia.get(nodo1, nodo2.id) == 1) {
-					//veo de qué color lo pinto
-					
-				}
+				if (this.matrizAdyacencia.get(nodo1.id, nodo2.id) == 1) {
+					// veo de qué color lo pinto
+					if(nodo2.color != nodo1.color && nodo2.color != 0) {
+						colorActual++;
+						colorMax = colorActual;
+					}
 
+				}
 			}
+			nodo1.pintar(colorActual);
+			colorActual = 1;
 		}
 
-		return new SalidaColoreo(this.nodos, 5);
+		return new SalidaColoreo(this.nodos, colorMax);
+	}
 
 	public void colorearMatula(int cantidadDeVecesACorrer) {
 		this.colorear();
