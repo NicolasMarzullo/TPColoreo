@@ -2,12 +2,12 @@ package tests;
 
 import org.junit.Test;
 
-import Generador.Generador;
-import Generador.Npartito;
-import Generador.Porcentaje;
-import Generador.Probabilidad;
-import Generador.Regular;
-import Generador.RegularAdyacencia;
+import generador.Generador;
+import generador.Npartito;
+import generador.Porcentaje;
+import generador.Probabilidad;
+import generador.Regular;
+import generador.RegularAdyacencia;
 
 public class GrafoTests {
 

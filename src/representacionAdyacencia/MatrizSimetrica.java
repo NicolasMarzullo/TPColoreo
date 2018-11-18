@@ -1,4 +1,4 @@
-package RepresentacionAdyacencia;
+package representacionAdyacencia;
 
 
 public class MatrizSimetrica {

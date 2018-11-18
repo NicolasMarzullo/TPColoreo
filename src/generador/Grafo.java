@@ -1,4 +1,4 @@
-package Generador;
+package generador;
 
 public class Grafo {
 

@@ -1,11 +1,11 @@
-package Generador;
+package generador;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
-import RepresentacionAdyacencia.MatrizSimetrica;
+import representacionAdyacencia.MatrizSimetrica;
 
 public abstract class Generador {
 
