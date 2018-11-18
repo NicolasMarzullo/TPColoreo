@@ -1,8 +1,12 @@
 package coloreo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
+
 import representacionAdyacencia.MatrizSimetrica;
 
 public class GrafoNPND {
@@ -37,30 +41,16 @@ public class GrafoNPND {
 			this.matrizAdyacencia.set(entrada.nextInt(), entrada.nextInt(), 1);
 		}
 
-		for(int k = 0; k < this.cantidadDeNodos;k++)
-		{
+		for (int k = 0; k < this.cantidadDeNodos; k++) {
 			int grado = 0;
 			Nodo nodo = this.nodos.get(k);
-			for(int j = 0;j<this.cantidadDeNodos;j++)
-			{
-				if(this.matrizAdyacencia.get(nodo.id,j) == 1){
+			for (int j = 0; j < this.cantidadDeNodos; j++) {
+				if (this.matrizAdyacencia.get(nodo.id, j) == 1) {
 					nodo.grado++;
 				}
 			}
 		}
 		entrada.close();
-	}
-
-	public void colorearSecuencial(int cantidadDeVecesACorrer) {
-		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
-			Collections.shuffle(nodos);
-			this.colorear();
-			if (this.cantidadDeColoresCorridaActual < this.cantidadMejorDeColores || this.cantidadMejorDeColores == 0) {
-				this.cantidadMejorDeColores = this.cantidadDeColoresCorridaActual;
-				this.numeroDeCorridaMejorCantidadColores = i + 1;
-			}
-			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual]++;
-		}
 	}
 
 	public SalidaColoreo colorear() {
@@ -71,8 +61,8 @@ public class GrafoNPND {
 		for (Nodo nodo1 : this.nodos) {
 			for (Nodo nodo2 : this.nodos) {
 				if (this.matrizAdyacencia.get(nodo1.id, nodo2.id) == 1) {
-					// veo de qu� color lo pinto
-					if(nodo2.color != nodo1.color && nodo2.color != 0) {
+					// veo de que color lo pinto
+					if (nodo2.color != nodo1.color && nodo2.color != 0) {
 						colorActual++;
 						colorMax = colorActual;
 					}
@@ -82,12 +72,11 @@ public class GrafoNPND {
 			nodo1.pintar(colorActual);
 			colorActual = 1;
 		}
-
 		return new SalidaColoreo(this.nodos, 5);
 	}
 
 	public void colorearSecuencial(int cantidadDeVecesACorrer) {
-		this.resultadoDeCorrida =  new int[this.cantidadDeNodos];
+		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
 			this.colorear();
@@ -101,10 +90,9 @@ public class GrafoNPND {
 
 	public void colorearMatula(int cantidadDeVecesACorrer) {
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
-		for(int i = 0;i<cantidadDeVecesACorrer;i++)
-		{
+		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
-			Collections.sort(nodos,new Comparator<Nodo>(){
+			Collections.sort(nodos, new Comparator<Nodo>() {
 				@Override
 				public int compare(Nodo n1, Nodo n2) {
 					return n1.grado - n2.grado;
@@ -122,10 +110,9 @@ public class GrafoNPND {
 
 	public void colorearWheelsPower(int cantidadDeVecesACorrer) {
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
-		for(int i = 0;i<cantidadDeVecesACorrer;i++)
-		{
+		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
-			Collections.sort(nodos,new Comparator<Nodo>(){
+			Collections.sort(nodos, new Comparator<Nodo>() {
 				@Override
 				public int compare(Nodo n1, Nodo n2) {
 					return n2.grado - n1.grado;
