@@ -62,7 +62,9 @@ public class GrafoNPND {
 		Nodo nodoActual;
 
 		List<Nodo> grafoColoreado = new ArrayList<>();
-		grafoColoreado.addAll(this.nodos); // Creo un nuevo grafo
+		for (int i = 0; i < this.cantidadDeNodos; i++) {
+			grafoColoreado.add(new Nodo(i)); // Creo un nuevo grafo
+		}
 
 		// Uso algoritmo que colorea todo lo que puede con un color
 		while (nodosPintados != this.cantidadDeNodos) {
@@ -96,7 +98,7 @@ public class GrafoNPND {
 			colorActual++;// Ya di una vuelta
 			loPuedoPintarDelColorActual = true;
 		}
-		this.cantidadDeColoresCorridaActual = colorActual;
+		this.cantidadDeColoresCorridaActual = colorActual - 1;
 	}
 
 	public void colorearSecuencial(int cantidadDeVecesACorrer) throws FileNotFoundException {
@@ -160,7 +162,8 @@ public class GrafoNPND {
 		PrintWriter salida = new PrintWriter(archivo);
 		salida.println(this.cantidadMejorDeColores + "  " + this.numeroDeCorridaMejorCantidadColores);
 		for (int i = 0; i < resultadoDeCorrida.length; i++) {
-			salida.println("Cantidad de colores utilizados: " + (i) + "Cantidad de veces que se uso: " + this.resultadoDeCorrida[i]);
+			salida.println("Cantidad de colores utilizados: " + (i) + "Cantidad de veces que se uso: "
+					+ this.resultadoDeCorrida[i]);
 		}
 		salida.close();
 	}
