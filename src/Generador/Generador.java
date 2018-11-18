@@ -72,6 +72,7 @@ public abstract class Generador {
 				}
 			}
 		}
+		salida.close();
 	}
 
 	@Override
