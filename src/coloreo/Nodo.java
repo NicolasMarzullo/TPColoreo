@@ -1,6 +1,6 @@
 package coloreo;
 
-public class Nodo {
+public class Nodo{
 	int id;
 	int color;
 	int grado;
@@ -11,7 +11,6 @@ public class Nodo {
 		this.grado = 0;
 	}
 
-	
 	public void pintar(int color) {
 		this.color = color;
 	}

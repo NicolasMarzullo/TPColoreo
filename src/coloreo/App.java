@@ -13,13 +13,10 @@ public class App {
 		try {
 				Generador generador = new Porcentaje(600, 40);
 				generador.calcularParametrosDelGrafo();
-				generador.escribirEnArchivo("40Ady");
-				GrafoNPND grafoNPND = new GrafoNPND("40Ady");
+				generador.escribirEnArchivo("600Nodos_40Ady");
+				GrafoNPND grafoNPND = new GrafoNPND("600Nodos_40Ady");
 				grafoNPND.colorearSecuencial(10000);
-				grafoNPND.colorearMatula(10000);
-				grafoNPND.colorearWheelsPower(10000);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
