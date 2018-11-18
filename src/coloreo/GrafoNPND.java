@@ -55,25 +55,48 @@ public class GrafoNPND {
 	}
 
 	public void colorear() {
-		// Uso algoritmo que pinta nodo por nodo (una sola pasada).
-		int colorActual = 1;
-		int colorMax = 0;
+		int nodosPintados = 0, colorActual = 1, j;
+		boolean loPuedoPintarDelColorActual = true;
+		Nodo nodoActual;
+		
+		List<Nodo> grafoColoreado = new ArrayList<>();
+		grafoColoreado.addAll(this.nodos);	//Creo un nuevo grafo
 
-		for (Nodo nodo1 : this.nodos) {
-			for (Nodo nodo2 : this.nodos) {
-				if (this.matrizAdyacencia.get(nodo1.id, nodo2.id) == 1) {
-					// veo de que color lo pinto
-					if (nodo2.color != nodo1.color && nodo2.color != 0) {
-						colorActual++;
-						colorMax = colorActual;
+		// Uso algoritmo que colorea todo lo que puede con un color
+		while (nodosPintados != this.cantidadDeNodos) {
+
+			for (Nodo nodo : this.nodos) {
+
+				if (nodo.color != 0) { // No quiero que recorra nodos que ya fueron pintados.
+					j = 0;
+					while (j < grafoColoreado.size() && loPuedoPintarDelColorActual) {
+						nodoActual = grafoColoreado.get(j);
+						if (this.matrizAdyacencia.get(nodo.id, nodoActual.id) == 1) {
+							if (nodoActual.color != colorActual) {
+								loPuedoPintarDelColorActual = true;
+							} else {
+								loPuedoPintarDelColorActual = false;
+							}
+						}
+						j++;
 					}
+				} else {
+					loPuedoPintarDelColorActual = false;
+				}
+
+				if (loPuedoPintarDelColorActual) {
+					nodo.pintar(colorActual);
+					nodosPintados++;
 				}
 			}
-			nodo1.pintar(colorActual);
-			colorActual = 1;
+
+			colorActual++;// ya di una vuelta
+			loPuedoPintarDelColorActual = true;
+
 		}
-		this.cantidadDeColoresCorridaActual = colorMax;
-		//return new SalidaColoreo(this.nodos, colorMax);
+		
+		this.cantidadDeColoresCorridaActual = colorActual-1;
+
 	}
 
 	public void colorearSecuencial(int cantidadDeVecesACorrer) {
