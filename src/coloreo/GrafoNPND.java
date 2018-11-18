@@ -2,6 +2,7 @@ package coloreo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -16,9 +17,9 @@ public class GrafoNPND {
 	private int gradoMaximo = 0;
 	private int gradoMinimo = 0;
 	private MatrizSimetrica matrizAdyacencia;
-	private List<Nodo> nodos;
+	private List<Nodo> nodos = new ArrayList<>();
 	private int cantidadDeColoresCorridaActual = 0;
-	private int cantidadMejorDeColores = 0;
+	int cantidadMejorDeColores = 0;
 	private int numeroDeCorridaMejorCantidadColores = 0;
 	private int[] resultadoDeCorrida;
 
@@ -33,7 +34,7 @@ public class GrafoNPND {
 		}
 
 		this.cantidadDeAristas = entrada.nextInt();
-		this.porcentajeAdyacencia = entrada.nextDouble();
+		entrada.next();
 		this.gradoMaximo = entrada.nextInt();
 		this.gradoMinimo = entrada.nextInt();
 
@@ -53,7 +54,7 @@ public class GrafoNPND {
 		entrada.close();
 	}
 
-	public SalidaColoreo colorear() {
+	public void colorear() {
 		// Uso algoritmo que pinta nodo por nodo (una sola pasada).
 		int colorActual = 1;
 		int colorMax = 0;
@@ -66,13 +67,13 @@ public class GrafoNPND {
 						colorActual++;
 						colorMax = colorActual;
 					}
-
 				}
 			}
 			nodo1.pintar(colorActual);
 			colorActual = 1;
 		}
-		return new SalidaColoreo(this.nodos, 5);
+		this.cantidadDeColoresCorridaActual = colorMax;
+		//return new SalidaColoreo(this.nodos, colorMax);
 	}
 
 	public void colorearSecuencial(int cantidadDeVecesACorrer) {
@@ -84,7 +85,7 @@ public class GrafoNPND {
 				this.cantidadMejorDeColores = this.cantidadDeColoresCorridaActual;
 				this.numeroDeCorridaMejorCantidadColores = i + 1;
 			}
-			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual]++;
+			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
 	}
 

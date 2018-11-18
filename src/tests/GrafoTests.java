@@ -10,7 +10,7 @@ import generador.Regular;
 import generador.RegularAdyacencia;
 
 public class GrafoTests {
-
+/*
 	@Test
 	public void probabilidadTest() {
 		Generador gen = new Probabilidad(100, 75);
@@ -23,7 +23,7 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
-
+*/
 	@Test
 	public void porcentajeTest() {
 		Generador gen = new Porcentaje(600, 80);
@@ -36,7 +36,7 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
-
+/*
 	@Test
 	public void regularTest() {
 		Generador gen = new Regular(10000, 9999);
@@ -62,7 +62,7 @@ public class GrafoTests {
 	}
 
 	@Test
-	public void NpartitoTest() {
+	public void nPartitoTest() {
 		Generador gen = new Npartito(15, 4);
 		try {
 			gen.generar();
@@ -74,5 +74,5 @@ public class GrafoTests {
 		}
 		
 	}
-
+*/
 }
