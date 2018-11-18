@@ -12,6 +12,7 @@ public class GrafoNPND {
 	private Generador generador;
 
 	public GrafoNPND(Generador g) {
+		this.matrizAdyacencia = g.matriz;
 		this.generador = g;
 		this.nodos = new LinkedList<>();
 
