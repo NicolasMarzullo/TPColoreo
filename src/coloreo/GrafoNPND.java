@@ -65,7 +65,7 @@ public class GrafoNPND {
 		// Uso algoritmo que colorea todo lo que puede con un color
 		while (nodosPintados != this.cantidadDeNodos) {
 
-			for (Nodo nodo : this.nodos) {
+			for (Nodo nodo : grafoColoreado) {
 
 				if (nodo.color == 0) { // No quiero que recorra nodos que ya fueron pintados.
 					j = 0;
