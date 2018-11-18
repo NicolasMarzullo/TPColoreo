@@ -104,6 +104,9 @@ public class GrafoNPND {
 	}
 
 	public void colorearSecuencial(int cantidadDeVecesACorrer) throws FileNotFoundException {
+		this.cantidadDeColoresCorridaActual = 0;
+		this.cantidadMejorDeColores = 0;
+		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
@@ -118,6 +121,9 @@ public class GrafoNPND {
 	}
 
 	public void colorearMatula(int cantidadDeVecesACorrer) throws FileNotFoundException {
+		this.cantidadDeColoresCorridaActual = 0;
+		this.cantidadMejorDeColores = 0;
+		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
@@ -139,6 +145,9 @@ public class GrafoNPND {
 	}
 
 	public void colorearWheelsPower(int cantidadDeVecesACorrer) throws FileNotFoundException {
+		this.cantidadDeColoresCorridaActual = 0;
+		this.cantidadMejorDeColores = 0;
+		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
@@ -162,10 +171,10 @@ public class GrafoNPND {
 	public void generarEstadisticas(String algoritmo) throws FileNotFoundException {
 		File archivo = new File(this.nombreDeGrafo + " " + algoritmo);
 		PrintWriter salida = new PrintWriter(archivo);
-		salida.println("Mejor cantidad de Colores: " + this.cantidadMejorDeColores + "  " + "Corrida en el que salio: "
+		salida.println("MejorCantidadDeColores;" + this.cantidadMejorDeColores + ";" + "CorridaEnElQueSalio;"
 				+ this.numeroDeCorridaMejorCantidadColores);
 		for (int i = 0; i < resultadoDeCorrida.length; i++) {
-			salida.println("Cantidad de colores utilizados: " + (i + 1) + " " + "Cantidad de veces que se uso: "
+			salida.println("CantidadDeColoresUtilizados;" + (i + 1) + ";" + "CantidadDeVecesQueSeUso;"
 					+ this.resultadoDeCorrida[i]);
 		}
 		salida.close();
