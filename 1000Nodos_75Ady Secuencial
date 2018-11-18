@@ -1,4 +1,4 @@
-MejorCantidadDeColores;502;CorridaEnElQueSalio;1
+MejorCantidadDeColores;504;CorridaEnElQueSalio;1
 CantidadDeColoresUtilizados;1;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;2;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;3;CantidadDeVecesQueSeUso;0
@@ -500,9 +500,9 @@ CantidadDeColoresUtilizados;498;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;499;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;500;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;501;CantidadDeVecesQueSeUso;0
-CantidadDeColoresUtilizados;502;CantidadDeVecesQueSeUso;1
+CantidadDeColoresUtilizados;502;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;503;CantidadDeVecesQueSeUso;0
-CantidadDeColoresUtilizados;504;CantidadDeVecesQueSeUso;0
+CantidadDeColoresUtilizados;504;CantidadDeVecesQueSeUso;1
 CantidadDeColoresUtilizados;505;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;506;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;507;CantidadDeVecesQueSeUso;0
