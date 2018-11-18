@@ -1,4 +1,4 @@
-package generador;
+package coloreo;
 
 public class Nodo {
 

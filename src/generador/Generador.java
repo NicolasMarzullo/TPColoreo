@@ -82,4 +82,14 @@ public abstract class Generador {
 				+ ", gradoMax=" + gradoMax + ", gradoMin=" + gradoMin + "]";
 	}
 
+	public MatrizSimetrica getMatriz() {
+		return matriz;
+	}
+
+	public int getCantidadNodos() {
+		return cantidadNodos;
+	}
+
+	
+	
 }

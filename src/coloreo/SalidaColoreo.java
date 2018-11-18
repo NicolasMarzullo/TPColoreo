@@ -1,4 +1,4 @@
-package generador;
+package coloreo;
 
 import java.util.List;
 
