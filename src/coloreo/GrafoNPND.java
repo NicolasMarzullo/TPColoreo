@@ -159,7 +159,9 @@ public class GrafoNPND {
 		File archivo = new File(this.nombreDeGrafo + " " + algoritmo);
 		PrintWriter salida = new PrintWriter(archivo);
 		salida.println(this.cantidadMejorDeColores + "  " + this.numeroDeCorridaMejorCantidadColores);
-		salida.print(this.resultadoDeCorrida.toString());
+		for (int i = 0; i < resultadoDeCorrida.length; i++) {
+			salida.println("Cantidad de colores utilizados: " + (i) + "Cantidad de veces que se uso: " + this.resultadoDeCorrida[i]);
+		}
 		salida.close();
 	}
 }
