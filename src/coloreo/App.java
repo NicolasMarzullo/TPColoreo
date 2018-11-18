@@ -1,7 +1,5 @@
 package coloreo;
 
-import java.io.FileNotFoundException;
-
 import generador.Generador;
 import generador.Porcentaje;
 
