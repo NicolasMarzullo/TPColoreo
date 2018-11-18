@@ -11,13 +11,13 @@ public class App {
 		// ANALISIS ESTADISTICO PARA GRAFOS ALEATORIOS DE 600 NODOS
 		int[] resultado40Ady = new int[600];
 		try {
-			for (int i = 0; i < 600; i++) {
 				Generador generador = new Porcentaje(600, 40);
 				generador.calcularParametrosDelGrafo();
 				generador.escribirEnArchivo("40Ady");
 				GrafoNPND grafoNPND = new GrafoNPND("40Ady");
-				grafoNPND.colorear();
-			}
+				grafoNPND.colorearSecuencial(10000);
+				grafoNPND.colorearMatula(10000);
+				grafoNPND.colorearWheelsPower(10000);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
