@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import representacionAdyacencia.MatrizSimetrica;
@@ -37,7 +38,8 @@ public class GrafoNPND {
 		}
 
 		this.cantidadDeAristas = entrada.nextInt();
-		entrada.next();
+		entrada.useLocale(Locale.US);
+		this.porcentajeAdyacencia = entrada.nextDouble();
 		this.gradoMaximo = entrada.nextInt();
 		this.gradoMinimo = entrada.nextInt();
 
