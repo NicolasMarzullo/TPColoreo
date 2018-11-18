@@ -1,6 +1,6 @@
 package coloreo;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import generador.Generador;
@@ -15,7 +15,7 @@ public class GrafoNPND {
 	public GrafoNPND(Generador g) {
 		this.matrizAdyacencia = g.getMatriz();
 		this.generador = g;
-		this.nodos = new LinkedList<>();
+		this.nodos = new ArrayList<>();
 
 		// Cargo los nodos
 		for (int i = 0; i < g.getCantidadNodos(); i++) {
