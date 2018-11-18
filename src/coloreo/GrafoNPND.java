@@ -58,9 +58,9 @@ public class GrafoNPND {
 		int nodosPintados = 0, colorActual = 1, j;
 		boolean loPuedoPintarDelColorActual = true;
 		Nodo nodoActual;
-		
+
 		List<Nodo> grafoColoreado = new ArrayList<>();
-		grafoColoreado.addAll(this.nodos);	//Creo un nuevo grafo
+		grafoColoreado.addAll(this.nodos); // Creo un nuevo grafo
 
 		// Uso algoritmo que colorea todo lo que puede con un color
 		while (nodosPintados != this.cantidadDeNodos) {
@@ -69,7 +69,7 @@ public class GrafoNPND {
 
 				if (nodo.color == 0) { // No quiero que recorra nodos que ya fueron pintados.
 					j = 0;
-					loPuedoPintarDelColorActual = true; //Corte de control, la primera vez siempre ingresa.
+					loPuedoPintarDelColorActual = true; // Corte de control, la primera vez siempre ingresa.
 					while (j < grafoColoreado.size() && loPuedoPintarDelColorActual) {
 						nodoActual = grafoColoreado.get(j);
 						if (this.matrizAdyacencia.get(nodo.id, nodoActual.id) == 1) {
@@ -95,8 +95,8 @@ public class GrafoNPND {
 			loPuedoPintarDelColorActual = true;
 
 		}
-		
-		this.cantidadDeColoresCorridaActual = colorActual-1;
+
+		this.cantidadDeColoresCorridaActual = colorActual - 1;
 
 	}
 
