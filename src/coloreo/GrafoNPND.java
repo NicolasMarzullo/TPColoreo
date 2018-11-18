@@ -67,7 +67,7 @@ public class GrafoNPND {
 
 			for (Nodo nodo : this.nodos) {
 
-				if (nodo.color != 0) { // No quiero que recorra nodos que ya fueron pintados.
+				if (nodo.color == 0) { // No quiero que recorra nodos que ya fueron pintados.
 					j = 0;
 					while (j < grafoColoreado.size() && loPuedoPintarDelColorActual) {
 						nodoActual = grafoColoreado.get(j);
