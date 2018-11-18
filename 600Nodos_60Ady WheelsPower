@@ -1,4 +1,4 @@
-MejorCantidadDeColores;63;CorridaEnElQueSalio;1
+MejorCantidadDeColores;99;CorridaEnElQueSalio;1
 CantidadDeColoresUtilizados;1;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;2;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;3;CantidadDeVecesQueSeUso;0
@@ -62,7 +62,7 @@ CantidadDeColoresUtilizados;60;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;61;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;62;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;63;CantidadDeVecesQueSeUso;0
-CantidadDeColoresUtilizados;64;CantidadDeVecesQueSeUso;1
+CantidadDeColoresUtilizados;64;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;65;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;66;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;67;CantidadDeVecesQueSeUso;0
@@ -98,7 +98,7 @@ CantidadDeColoresUtilizados;96;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;97;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;98;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;99;CantidadDeVecesQueSeUso;0
-CantidadDeColoresUtilizados;100;CantidadDeVecesQueSeUso;0
+CantidadDeColoresUtilizados;100;CantidadDeVecesQueSeUso;1
 CantidadDeColoresUtilizados;101;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;102;CantidadDeVecesQueSeUso;0
 CantidadDeColoresUtilizados;103;CantidadDeVecesQueSeUso;0
