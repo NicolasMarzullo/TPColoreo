@@ -2,6 +2,7 @@ package coloreo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,10 +23,12 @@ public class GrafoNPND {
 	int cantidadMejorDeColores = 0;
 	private int numeroDeCorridaMejorCantidadColores = 0;
 	private int[] resultadoDeCorrida;
+	private String nombreDeGrafo;
 
 	public GrafoNPND(String path) throws FileNotFoundException {
 		File archivo = new File(path);
 		Scanner entrada = new Scanner(archivo);
+		this.nombreDeGrafo = path;
 		this.cantidadDeNodos = entrada.nextInt();
 		this.matrizAdyacencia = new MatrizSimetrica(this.cantidadDeNodos);
 
@@ -96,7 +99,7 @@ public class GrafoNPND {
 		this.cantidadDeColoresCorridaActual = colorActual;
 	}
 
-	public void colorearSecuencial(int cantidadDeVecesACorrer) {
+	public void colorearSecuencial(int cantidadDeVecesACorrer) throws FileNotFoundException {
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
@@ -107,9 +110,10 @@ public class GrafoNPND {
 			}
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
+		this.generarEstadisticas("Secuencial");
 	}
 
-	public void colorearMatula(int cantidadDeVecesACorrer) {
+	public void colorearMatula(int cantidadDeVecesACorrer) throws FileNotFoundException {
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
@@ -127,9 +131,10 @@ public class GrafoNPND {
 			}
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual]++;
 		}
+		this.generarEstadisticas("Matula");
 	}
 
-	public void colorearWheelsPower(int cantidadDeVecesACorrer) {
+	public void colorearWheelsPower(int cantidadDeVecesACorrer) throws FileNotFoundException {
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(nodos);
@@ -147,5 +152,14 @@ public class GrafoNPND {
 			}
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual]++;
 		}
+		this.generarEstadisticas("WheelsPower");
+	}
+
+	public void generarEstadisticas(String algoritmo) throws FileNotFoundException {
+		File archivo = new File(this.nombreDeGrafo + " " + algoritmo);
+		PrintWriter salida = new PrintWriter(archivo);
+		salida.println(this.cantidadMejorDeColores + "  " + this.numeroDeCorridaMejorCantidadColores);
+		salida.print(this.resultadoDeCorrida.toString());
+		salida.close();
 	}
 }
