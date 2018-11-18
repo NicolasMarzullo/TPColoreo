@@ -14,7 +14,7 @@ public class App {
 				generador.escribirEnArchivo("600Nodos_40Ady");
 				System.out.println(generador.toString());
 				GrafoNPND grafoNPND = new GrafoNPND("600Nodos_40Ady");
-				grafoNPND.colorearSecuencial(100);
+				grafoNPND.colorearSecuencial(50);
 				System.out.println(grafoNPND.cantidadMejorDeColores);
 		} catch (Exception e) {
 			e.printStackTrace();

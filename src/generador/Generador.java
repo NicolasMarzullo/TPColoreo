@@ -46,7 +46,6 @@ public abstract class Generador {
 			}
 
 			if (this.vectorGrado[i] < gradoMin) {
-				System.out.println(this.vectorGrado[i]);
 				this.gradoMin = this.vectorGrado[i];
 			}
 			sumaGrados += this.vectorGrado[i];

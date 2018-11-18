@@ -4,11 +4,13 @@ package representacionAdyacencia;
 public class MatrizSimetrica {
 	private int cantidadNodos;
 	private int[][] matriz;
+	private int[] vectorGrado;
 
 	public MatrizSimetrica(int cantidadNodos) {
 		this.cantidadNodos = cantidadNodos;
 
 		matriz = new int[cantidadNodos][];
+		vectorGrado = new int[cantidadNodos];
 
 		for (int i = 0; i < cantidadNodos; i++) {
 			matriz[i] = new int[i];
@@ -38,6 +40,8 @@ public class MatrizSimetrica {
 			return;
 		}
 		this.matriz[fila][columna] = val;
+		this.vectorGrado[fila]++;
+		this.vectorGrado[columna]++;
 	}
 
 	public int getCantidadNodos() {
