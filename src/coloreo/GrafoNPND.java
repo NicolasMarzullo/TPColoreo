@@ -69,6 +69,7 @@ public class GrafoNPND {
 
 				if (nodo.color == 0) { // No quiero que recorra nodos que ya fueron pintados.
 					j = 0;
+					loPuedoPintarDelColorActual = true; //Corte de control, la primera vez siempre ingresa.
 					while (j < grafoColoreado.size() && loPuedoPintarDelColorActual) {
 						nodoActual = grafoColoreado.get(j);
 						if (this.matrizAdyacencia.get(nodo.id, nodoActual.id) == 1) {
