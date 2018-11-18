@@ -86,7 +86,7 @@ public class GrafoNPND {
 				}
 
 				if (loPuedoPintarDelColorActual) {
-					nodo.pintar(colorActual);
+					grafoColoreado.get(nodo.id).pintar(colorActual);
 					nodosPintados++;
 				}
 			}
