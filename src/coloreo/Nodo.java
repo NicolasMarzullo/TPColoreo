@@ -2,8 +2,8 @@ package coloreo;
 
 public class Nodo {
 
-	private int id;
-	private int color;
+	int id;
+	int color;
 	
 	
 	public Nodo(int id) {
