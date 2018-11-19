@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import pa.MatrizSimetrica;
+import representacionAdyacencia.MatrizSimetrica;
 
 public class GrafoNPND {
 	private int cantidadDeNodos = 0;
@@ -66,7 +66,7 @@ public class GrafoNPND {
 		int cantNodosPintados = 0, colorActual = 1, j;
 		boolean loPuedoPintarDelColorActual = true;
 
-		this.nodosColoreados = new int[this.cantidadDeNodos]; //SOLUCION
+		this.nodosColoreados = new int[this.cantidadDeNodos]; // SOLUCION
 
 		// Uso algoritmo que colorea todo lo que puede con un color
 		while (cantNodosPintados != this.cantidadDeNodos) {
@@ -136,9 +136,10 @@ public class GrafoNPND {
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
 		this.generarEstadisticas("Secuencial");
-		//this.imprimirSolucion("Secuencial");
-		//ProgramaProbadorColoreo probador = new ProgramaProbadorColoreo(this.nombreDeGrafo + "_Solucion_" + "Secuencial");
-		//probador.validarSolucion();
+		// this.imprimirSolucion("Secuencial");
+		// ProgramaProbadorColoreo probador = new
+		// ProgramaProbadorColoreo(this.nombreDeGrafo + "_Solucion_" + "Secuencial");
+		// probador.validarSolucion();
 	}
 
 	public void colorearMatula(int cantidadDeVecesACorrer) throws FileNotFoundException {
@@ -163,9 +164,10 @@ public class GrafoNPND {
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
 		this.generarEstadisticas("Matula");
-		//this.imprimirSolucion("Matula");
-		//ProgramaProbadorColoreo probador = new ProgramaProbadorColoreo(this.nombreDeGrafo + "_Solucion_" + "Matula");
-		//probador.validarSolucion();
+		// this.imprimirSolucion("Matula");
+		// ProgramaProbadorColoreo probador = new
+		// ProgramaProbadorColoreo(this.nombreDeGrafo + "_Solucion_" + "Matula");
+		// probador.validarSolucion();
 	}
 
 	public void colorearWheelsPower(int cantidadDeVecesACorrer) throws FileNotFoundException {
@@ -192,9 +194,10 @@ public class GrafoNPND {
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
 		this.generarEstadisticas("WheelsPower");
-		//this.imprimirSolucion("WheelsPower");
-		//ProgramaProbadorColoreo probador = new ProgramaProbadorColoreo(this.nombreDeGrafo + "_Solucion_" + "WheelsPower");
-		//probador.validarSolucion();
+		// this.imprimirSolucion("WheelsPower");
+		// ProgramaProbadorColoreo probador = new
+		// ProgramaProbadorColoreo(this.nombreDeGrafo + "_Solucion_" + "WheelsPower");
+		// probador.validarSolucion();
 	}
 
 	public void generarEstadisticas(String algoritmo) throws FileNotFoundException {

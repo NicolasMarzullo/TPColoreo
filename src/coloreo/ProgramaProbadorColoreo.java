@@ -3,8 +3,7 @@ package coloreo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-import pa.MatrizSimetrica;
+import representacionAdyacencia.MatrizSimetrica;
 
 public class ProgramaProbadorColoreo {
 	private int numeroDeNodos;
