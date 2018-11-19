@@ -19,11 +19,11 @@ public class App {
 				
 				//System.out.println(generador40.toString());
 				GrafoNPND grafoNPND40 = new GrafoNPND("600Nodos_40Ady");
-				grafoNPND40.colorearSecuencial(10);
+				grafoNPND40.colorearSecuencial(10000);
 				System.out.println("Secuencial " + grafoNPND40.cantidadMejorDeColores);
-				grafoNPND40.colorearMatula(10);
+				grafoNPND40.colorearMatula(10000);
 				System.out.println("Matula " + grafoNPND40.cantidadMejorDeColores);
-				grafoNPND40.colorearWheelsPower(1000);
+				grafoNPND40.colorearWheelsPower(10000);
 				System.out.println("Wheels Power " +  grafoNPND40.cantidadMejorDeColores);
 				System.out.println("Fin 40 Adyacencia");
 				

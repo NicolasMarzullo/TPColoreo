@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
-import representacionAdyacencia.MatrizSimetrica;
+import pa.MatrizSimetrica;
 
 public abstract class Generador {
 

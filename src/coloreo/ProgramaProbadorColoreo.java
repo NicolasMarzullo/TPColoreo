@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import representacionAdyacencia.MatrizSimetrica;
+import pa.MatrizSimetrica;
 
 public class ProgramaProbadorColoreo {
 	private int numeroDeNodos;

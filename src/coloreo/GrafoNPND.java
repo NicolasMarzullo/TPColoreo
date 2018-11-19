@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import representacionAdyacencia.MatrizSimetrica;
+import pa.MatrizSimetrica;
 
 public class GrafoNPND {
 	private int cantidadDeNodos = 0;
@@ -66,7 +66,7 @@ public class GrafoNPND {
 		int cantNodosPintados = 0, colorActual = 1, j;
 		boolean loPuedoPintarDelColorActual = true;
 
-		this.nodosColoreados = new int[this.cantidadDeNodos];
+		this.nodosColoreados = new int[this.cantidadDeNodos]; //SOLUCION
 
 		// Uso algoritmo que colorea todo lo que puede con un color
 		while (cantNodosPintados != this.cantidadDeNodos) {
