@@ -3,11 +3,10 @@ package coloreo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -155,6 +154,23 @@ public class GrafoNPND {
 					return n1.grado - n2.grado;
 				}
 			});
+
+			int cotaSuperior = 0;
+			int gradoActual = 0;
+			int gradoAnterior = 0;
+			for (int j = 0; j < this.nodos.size(); j++) {
+				gradoAnterior = gradoActual = this.nodos.get(j).grado;
+				while (gradoAnterior == gradoActual) {
+					cotaSuperior++;
+					if (cotaSuperior >= this.nodos.size())
+						cotaSuperior = this.nodos.size() - 1;
+					gradoActual = this.nodos.get(cotaSuperior).grado;
+				}
+
+				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
+				j = cotaSuperior;
+			}
+
 			this.colorear();
 
 			if (this.cantidadDeColoresCorridaActual < this.cantidadMejorDeColores || this.cantidadMejorDeColores == 0) {
@@ -184,6 +200,23 @@ public class GrafoNPND {
 					return n2.grado - n1.grado;
 				}
 			});
+
+			int cotaSuperior = 0;
+			int gradoActual = 0;
+			int gradoAnterior = 0;
+			for (int j = 0; j < this.nodos.size(); j++) {
+				gradoAnterior = gradoActual = this.nodos.get(j).grado;
+				while (gradoAnterior == gradoActual) {
+					cotaSuperior++;
+					if (cotaSuperior >= this.nodos.size())
+						cotaSuperior = this.nodos.size() - 1;
+					gradoActual = this.nodos.get(cotaSuperior).grado;
+				}
+
+				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
+				j = cotaSuperior;
+			}
+
 			this.colorear();
 
 			if (this.cantidadDeColoresCorridaActual < this.cantidadMejorDeColores || this.cantidadMejorDeColores == 0) {
@@ -206,8 +239,9 @@ public class GrafoNPND {
 		salida.println("MejorCantidadDeColores;" + this.cantidadMejorDeColores + ";" + "CorridaEnElQueSalio;"
 				+ this.numeroDeCorridaMejorCantidadColores);
 		for (int i = 0; i < resultadoDeCorrida.length; i++) {
-			salida.println("CantidadDeColoresUtilizados;" + (i + 1) + ";" + "CantidadDeVecesQueSeUso;"
-					+ this.resultadoDeCorrida[i]);
+			if (this.resultadoDeCorrida[i] > 0)
+				salida.println("CantidadDeColoresUtilizados;" + (i + 1) + ";" + "CantidadDeVecesQueSeUso;"
+						+ this.resultadoDeCorrida[i]);
 		}
 		salida.close();
 	}
