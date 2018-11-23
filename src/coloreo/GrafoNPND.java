@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
-
 import representacionAdyacencia.MatrizSimetrica;
 
 public class GrafoNPND {
@@ -167,10 +166,6 @@ public class GrafoNPND {
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
 		this.generarEstadisticas("Secuencial");
-		// this.imprimirSolucion("Secuencial");
-		// ProgramaProbadorColoreo probador = new
-		// ProgramaProbadorColoreo(this.nombreDeGrafo + "_Solucion_" + "Secuencial");
-		// probador.validarSolucion();
 	}
 
 	public void colorearMatula(int cantidadDeVecesACorrer) throws FileNotFoundException {
@@ -190,20 +185,22 @@ public class GrafoNPND {
 			int cotaSuperior = 0;
 			int gradoActual = 0;
 			int gradoAnterior = 0;
+			
 			for (int j = 0; j < this.nodos.size(); j++) {
 				gradoAnterior = gradoActual = this.nodos.get(j).grado;
 				while (gradoAnterior == gradoActual) {
 					cotaSuperior++;
-					if (cotaSuperior >= this.nodos.size())
+					if (cotaSuperior >= this.nodos.size()) {
 						cotaSuperior = this.nodos.size() - 1;
+						gradoActual = this.nodos.get(cotaSuperior).grado;
+						break;
+					}
 					gradoActual = this.nodos.get(cotaSuperior).grado;
 				}
-
+				
 				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
 				j = cotaSuperior;
 			}
-
-			this.colorear();
 
 			if (this.cantidadDeColoresCorridaActual < this.cantidadMejorDeColores || this.cantidadMejorDeColores == 0) {
 				this.cantidadMejorDeColores = this.cantidadDeColoresCorridaActual;
@@ -236,15 +233,19 @@ public class GrafoNPND {
 			int cotaSuperior = 0;
 			int gradoActual = 0;
 			int gradoAnterior = 0;
+			
 			for (int j = 0; j < this.nodos.size(); j++) {
 				gradoAnterior = gradoActual = this.nodos.get(j).grado;
 				while (gradoAnterior == gradoActual) {
 					cotaSuperior++;
-					if (cotaSuperior >= this.nodos.size())
+					if (cotaSuperior >= this.nodos.size()) {
 						cotaSuperior = this.nodos.size() - 1;
+						gradoActual = this.nodos.get(cotaSuperior).grado;
+						break;
+					}
 					gradoActual = this.nodos.get(cotaSuperior).grado;
 				}
-
+				
 				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
 				j = cotaSuperior;
 			}
