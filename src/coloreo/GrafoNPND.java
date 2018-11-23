@@ -103,21 +103,20 @@ public class GrafoNPND {
 	public void colorear() {
 		int color = 0;
 		int colorMax = 0;
-		boolean pintarConEsteColor;
 		ArrayList<Nodo> grafoColoreado = new ArrayList<>();
 
 		// grafo auxiliar el cual me encargo de pintarlo
 		for (Nodo n : this.nodos) {
-			grafoColoreado.add(n);
+			grafoColoreado.add(new Nodo(n.id));
 		}
 
 		for (Nodo n : grafoColoreado) {
 			color = 1;
-			pintarConEsteColor = false;
 
 			// Busco con qué color pintarlo
 			for (int j = 0; j < this.cantidadDeNodos; j++) {
-				if (this.matrizAdyacencia.get(n.id, j) == 1 && grafoColoreado.get(j).color == color) {
+				if (this.matrizAdyacencia.get(n.id, j) == 1 && grafoColoreado.get(j).color == color
+						&& grafoColoreado.get(j).color != 0) {
 					color++;
 				}
 			}
