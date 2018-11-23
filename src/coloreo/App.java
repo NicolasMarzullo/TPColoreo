@@ -32,14 +32,14 @@ public class App {
 				generador60.calcularParametrosDelGrafo();
 				generador60.escribirEnArchivo("600Nodos_60Ady");
 				//System.out.println(generador50.toString());
-				GrafoNPND grafoNPND50 = new GrafoNPND("600Nodos_60Ady");
-				grafoNPND50.colorearSecuencial(10000);
-				System.out.println("Secuencial " + grafoNPND50.cantidadMejorDeColores);
-				grafoNPND50.colorearMatula(10000);
-				System.out.println("Matula " + grafoNPND50.cantidadMejorDeColores);
-				grafoNPND50.colorearWheelsPower(10000);
-				System.out.println("Wheels Power " +  grafoNPND50.cantidadMejorDeColores);
-				System.out.println("Fin 50 Adyacencia");
+				GrafoNPND grafoNPND60 = new GrafoNPND("600Nodos_60Ady");
+				grafoNPND60.colorearSecuencial(10000);
+				System.out.println("Secuencial " + grafoNPND60.cantidadMejorDeColores);
+				grafoNPND60.colorearMatula(10000);
+				System.out.println("Matula " + grafoNPND60.cantidadMejorDeColores);
+				grafoNPND60.colorearWheelsPower(10000);
+				System.out.println("Wheels Power " +  grafoNPND60.cantidadMejorDeColores);
+				System.out.println("Fin 60 Adyacencia");
 				
 				System.out.println("90 Adyacencia");
 				Generador generador90 = new Porcentaje(600,90);
@@ -58,7 +58,7 @@ public class App {
 				System.out.println("FIN GRAFOS ALEATORIOS");
 				
 				//GRAFOS REGULARES
-				/*System.out.println("\nGRAFOS REGULARES");
+				System.out.println("\nGRAFOS REGULARES");
 				System.out.println("Regular 50 Adyacencia");
 				Generador generadorReg50 = new RegularAdyacencia(1000,50);
 				generadorReg50.generar();
@@ -88,7 +88,7 @@ public class App {
 				System.out.println("Wheels Power " +  grafoNPNDReg75.cantidadMejorDeColores);
 
 				System.out.println("FIN GRAFOS REGULARES");
-				*/
+				
 				//FIN GRAFOS REGULARES
 				
 		} catch (Exception e) {

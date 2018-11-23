@@ -61,44 +61,76 @@ public class GrafoNPND {
 		entrada.close();
 	}
 
+//	public void colorear() {
+//		int cantNodosPintados = 0, colorActual = 1, j;
+//		boolean loPuedoPintarDelColorActual = true;
+//
+//		this.nodosColoreados = new int[this.cantidadDeNodos]; // SOLUCION
+//
+//		// Uso algoritmo que colorea todo lo que puede con un color
+//		while (cantNodosPintados != this.cantidadDeNodos) {
+//
+//			for (Nodo nodo : this.nodos) {
+//
+//				if (this.nodosColoreados[nodo.id] == 0) { // No quiero que recorra nodos que ya fueron pintados.
+//					j = 0;
+//					loPuedoPintarDelColorActual = true; // Corte de control, la primera vez siempre ingresa.
+//					while (j < this.nodosColoreados.length && loPuedoPintarDelColorActual) {
+//						if (this.matrizAdyacencia.get(nodo.id, j) == 1) {
+//							if (this.nodosColoreados[j] != colorActual) {
+//								loPuedoPintarDelColorActual = true;
+//							} else {
+//								loPuedoPintarDelColorActual = false;
+//							}
+//						}
+//						j++;
+//					}
+//				} else {
+//					loPuedoPintarDelColorActual = false;
+//				}
+//
+//				if (loPuedoPintarDelColorActual) {
+//					this.nodosColoreados[nodo.id] = colorActual;
+//					cantNodosPintados++;
+//				}
+//			}
+//
+//			colorActual++;// Ya di una vuelta
+//			loPuedoPintarDelColorActual = true;
+//		}
+//		this.cantidadDeColoresCorridaActual = colorActual - 1;
+//	}
+
 	public void colorear() {
-		int cantNodosPintados = 0, colorActual = 1, j;
-		boolean loPuedoPintarDelColorActual = true;
+		int color = 0;
+		int colorMax = 0;
+		boolean pintarConEsteColor;
+		ArrayList<Nodo> grafoColoreado = new ArrayList<>();
 
-		this.nodosColoreados = new int[this.cantidadDeNodos]; // SOLUCION
+		// grafo auxiliar el cual me encargo de pintarlo
+		for (Nodo n : this.nodos) {
+			grafoColoreado.add(n);
+		}
 
-		// Uso algoritmo que colorea todo lo que puede con un color
-		while (cantNodosPintados != this.cantidadDeNodos) {
+		for (Nodo n : grafoColoreado) {
+			color = 1;
+			pintarConEsteColor = false;
 
-			for (Nodo nodo : this.nodos) {
-
-				if (this.nodosColoreados[nodo.id] == 0) { // No quiero que recorra nodos que ya fueron pintados.
-					j = 0;
-					loPuedoPintarDelColorActual = true; // Corte de control, la primera vez siempre ingresa.
-					while (j < this.nodosColoreados.length && loPuedoPintarDelColorActual) {
-						if (this.matrizAdyacencia.get(nodo.id, j) == 1) {
-							if (this.nodosColoreados[j] != colorActual) {
-								loPuedoPintarDelColorActual = true;
-							} else {
-								loPuedoPintarDelColorActual = false;
-							}
-						}
-						j++;
-					}
-				} else {
-					loPuedoPintarDelColorActual = false;
-				}
-
-				if (loPuedoPintarDelColorActual) {
-					this.nodosColoreados[nodo.id] = colorActual;
-					cantNodosPintados++;
+			// Busco con qué color pintarlo
+			for (int j = 0; j < this.cantidadDeNodos; j++) {
+				if (this.matrizAdyacencia.get(n.id, j) == 1 && grafoColoreado.get(j).color == color) {
+					color++;
 				}
 			}
 
-			colorActual++;// Ya di una vuelta
-			loPuedoPintarDelColorActual = true;
+			n.pintar(color);
+
+			if (colorMax < color) {
+				colorMax = color;
+			}
 		}
-		this.cantidadDeColoresCorridaActual = colorActual - 1;
+
+		this.cantidadDeColoresCorridaActual = colorMax;
 	}
 
 	public void imprimirSolucion(String algortimo) throws FileNotFoundException {
