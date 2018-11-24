@@ -103,21 +103,21 @@ public class GrafoNPND {
 	public void colorear() {
 		int color = 0;
 		int colorMax = 0;
-		ArrayList<Nodo> grafoColoreado = new ArrayList<>();
 
-		// grafo auxiliar el cual me encargo de pintarlo
+		//Lo despinto
 		for (Nodo n : this.nodos) {
-			grafoColoreado.add(new Nodo(n.id));
+			n.pintar(0);
 		}
 
-		for (Nodo n : grafoColoreado) {
+		for (Nodo n : this.nodos) {
 			color = 1;
 
 			// Busco con qué color pintarlo
 			for (int j = 0; j < this.cantidadDeNodos; j++) {
-				if (this.matrizAdyacencia.get(n.id, j) == 1 && grafoColoreado.get(j).color == color
-						&& grafoColoreado.get(j).color != 0) {
+				if (this.matrizAdyacencia.get(n.id, j) == 1 && this.nodos.get(j).color == color
+						&& this.nodos.get(j).color != 0) {
 					color++;
+					j = 0; //Vuelvo a recorrer porque quizas este color lo tiene algun otro nodo
 				}
 			}
 
@@ -184,7 +184,7 @@ public class GrafoNPND {
 			int cotaSuperior = 0;
 			int gradoActual = 0;
 			int gradoAnterior = 0;
-			
+
 			for (int j = 0; j < this.nodos.size(); j++) {
 				gradoAnterior = gradoActual = this.nodos.get(j).grado;
 				while (gradoAnterior == gradoActual) {
@@ -196,7 +196,7 @@ public class GrafoNPND {
 					}
 					gradoActual = this.nodos.get(cotaSuperior).grado;
 				}
-				
+
 				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
 				j = cotaSuperior;
 			}
@@ -232,7 +232,7 @@ public class GrafoNPND {
 			int cotaSuperior = 0;
 			int gradoActual = 0;
 			int gradoAnterior = 0;
-			
+
 			for (int j = 0; j < this.nodos.size(); j++) {
 				gradoAnterior = gradoActual = this.nodos.get(j).grado;
 				while (gradoAnterior == gradoActual) {
@@ -244,7 +244,7 @@ public class GrafoNPND {
 					}
 					gradoActual = this.nodos.get(cotaSuperior).grado;
 				}
-				
+
 				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
 				j = cotaSuperior;
 			}

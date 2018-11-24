@@ -18,14 +18,18 @@ public class App {
 				generador40.escribirEnArchivo("600Nodos_40Ady");
 				//System.out.println(generador40.toString());
 				GrafoNPND grafoNPND40 = new GrafoNPND("600Nodos_40Ady");
+				long t1 = System.currentTimeMillis();
 				grafoNPND40.colorearSecuencial(10000);
 				System.out.println("Secuencial " + grafoNPND40.cantidadMejorDeColores);
+				long t2 = System.currentTimeMillis();
+				System.out.println("Tiempo en ms: " + (t2-t1));
+				
 //				grafoNPND40.colorearMatula(10000);
 //				System.out.println("Matula " + grafoNPND40.cantidadMejorDeColores);
 //				grafoNPND40.colorearWheelsPower(10000);
 //				System.out.println("Wheels Power " +  grafoNPND40.cantidadMejorDeColores);
 //				System.out.println("Fin 40 Adyacencia");
-				
+//				
 //				System.out.println("60 Adyacencia");
 //				Generador generador60 = new Porcentaje(600,60);
 //				generador60.generar();
