@@ -181,25 +181,25 @@ public class GrafoNPND {
 				}
 			});
 
-//			int cotaSuperior = 0;
-//			int gradoActual = 0;
-//			int gradoAnterior = 0;
-//
-//			for (int j = 0; j < this.nodos.size(); j++) {
-//				gradoAnterior = gradoActual = this.nodos.get(j).grado;
-//				while (gradoAnterior == gradoActual) {
-//					cotaSuperior++;
-//					if (cotaSuperior >= this.nodos.size()) {
-//						cotaSuperior = this.nodos.size() - 1;
-//						gradoActual = this.nodos.get(cotaSuperior).grado;
-//						break;
-//					}
-//					gradoActual = this.nodos.get(cotaSuperior).grado;
-//				}
-//
-//				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
-//				j = cotaSuperior;
-//			}
+			int cotaSuperior = 0;
+			int gradoActual = 0;
+			int gradoAnterior = 0;
+
+			for (int j = 0; j < this.nodos.size(); j++) {
+				gradoAnterior = gradoActual = this.nodos.get(j).grado;
+				while (gradoAnterior == gradoActual) {
+					cotaSuperior++;
+					if (cotaSuperior >= this.nodos.size()) {
+						cotaSuperior = this.nodos.size() - 1;
+						gradoActual = this.nodos.get(cotaSuperior).grado;
+						break;
+					}
+					gradoActual = this.nodos.get(cotaSuperior).grado;
+				}
+
+				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
+				j = cotaSuperior;
+			}
 			
 			this.colorear();
 
@@ -231,25 +231,25 @@ public class GrafoNPND {
 				}
 			});
 
-//			int cotaSuperior = 0;
-//			int gradoActual = 0;
-//			int gradoAnterior = 0;
-//
-//			for (int j = 0; j < this.nodos.size(); j++) {
-//				gradoAnterior = gradoActual = this.nodos.get(j).grado;
-//				while (gradoAnterior == gradoActual) {
-//					cotaSuperior++;
-//					if (cotaSuperior >= this.nodos.size()) {
-//						cotaSuperior = this.nodos.size() - 1;
-//						gradoActual = this.nodos.get(cotaSuperior).grado;
-//						break;
-//					}
-//					gradoActual = this.nodos.get(cotaSuperior).grado;
-//				}
-//
-//				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
-//				j = cotaSuperior;
-//			}
+			int cotaSuperior = 0;
+			int gradoActual = 0;
+			int gradoAnterior = 0;
+
+			for (int j = 0; j < this.nodos.size(); j++) {
+				gradoAnterior = gradoActual = this.nodos.get(j).grado;
+				while (gradoAnterior == gradoActual) {
+					cotaSuperior++;
+					if (cotaSuperior >= this.nodos.size()) {
+						cotaSuperior = this.nodos.size() - 1;
+						gradoActual = this.nodos.get(cotaSuperior).grado;
+						break;
+					}
+					gradoActual = this.nodos.get(cotaSuperior).grado;
+				}
+
+				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
+				j = cotaSuperior;
+			}
 
 			this.colorear();
 
