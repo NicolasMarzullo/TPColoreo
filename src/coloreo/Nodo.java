@@ -14,6 +14,12 @@ public class Nodo{
 	public void pintar(int color) {
 		this.color = color;
 	}
+
+	@Override
+	public String toString() {
+		return "Nodo [id=" + id + ", color=" + color + ", grado=" + grado + "]";
+	}
+	
 	
 	
 }

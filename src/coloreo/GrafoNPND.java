@@ -174,15 +174,15 @@ public class GrafoNPND {
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
+			Collections.sort(nodos, new Comparator<Nodo>() {
+				@Override
+				public int compare(Nodo n1, Nodo n2) {
+					return n1.grado - n2.grado;
+				}
+			});
+
 			if (mezclar) {
 				Collections.shuffle(nodos);
-				Collections.sort(nodos, new Comparator<Nodo>() {
-					@Override
-					public int compare(Nodo n1, Nodo n2) {
-						return n1.grado - n2.grado;
-					}
-				});
-
 				int cotaSuperior = 0;
 				int gradoActual = 0;
 				int gradoAnterior = 0;
@@ -227,8 +227,6 @@ public class GrafoNPND {
 		this.mejorSolucion = new int[this.cantidadDeNodos];
 
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
-			if (mezclar) {
-				Collections.shuffle(nodos);
 				Collections.sort(nodos, new Comparator<Nodo>() {
 					@Override
 					public int compare(Nodo n1, Nodo n2) {
@@ -236,6 +234,8 @@ public class GrafoNPND {
 					}
 				});
 
+			if (mezclar) {
+				Collections.shuffle(nodos);
 				int cotaSuperior = 0;
 				int gradoActual = 0;
 				int gradoAnterior = 0;
