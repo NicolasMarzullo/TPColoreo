@@ -103,9 +103,9 @@ public class GrafoNPND {
 	public void colorear() {
 		int color;
 		int colorMax = 0;
-		
-		for(Nodo n: this.nodos) {
-			n.pintar(0);//despinto todo
+
+		for (Nodo n : this.nodos) {
+			n.pintar(0);// despinto todo
 		}
 
 		for (Nodo n : this.nodos) {
@@ -153,8 +153,7 @@ public class GrafoNPND {
 		this.cantidadMejorDeColores = 0;
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
-		
-		
+
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(this.nodos);
 			this.colorear();
@@ -167,15 +166,14 @@ public class GrafoNPND {
 		this.generarEstadisticas("Secuencial");
 	}
 
-	public void colorearMatula(int cantidadDeVecesACorrer) throws FileNotFoundException {
+	public void colorearMatula(int cantidadDeVecesACorrer, boolean mezclar) throws FileNotFoundException {
 		this.cantidadDeColoresCorridaActual = 0;
 		this.cantidadMejorDeColores = 0;
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 
-		
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
-			
+
 			Collections.sort(nodos, new Comparator<Nodo>() {
 				@Override
 				public int compare(Nodo n1, Nodo n2) {
@@ -183,24 +181,27 @@ public class GrafoNPND {
 				}
 			});
 
-			int cotaSuperior = 0;
-			int gradoActual = 0;
-			int gradoAnterior = 0;
+			if (mezclar) {
 
-			for (int j = 0; j < this.nodos.size(); j++) {
-				gradoAnterior = gradoActual = this.nodos.get(j).grado;
-				while (gradoAnterior == gradoActual) {
-					cotaSuperior++;
-					if (cotaSuperior >= this.nodos.size()) {
-						cotaSuperior = this.nodos.size() - 1;
+				int cotaSuperior = 0;
+				int gradoActual = 0;
+				int gradoAnterior = 0;
+
+				for (int j = 0; j < this.nodos.size(); j++) {
+					gradoAnterior = gradoActual = this.nodos.get(j).grado;
+					while (gradoAnterior == gradoActual) {
+						cotaSuperior++;
+						if (cotaSuperior >= this.nodos.size()) {
+							cotaSuperior = this.nodos.size() - 1;
+							gradoActual = this.nodos.get(cotaSuperior).grado;
+							break;
+						}
 						gradoActual = this.nodos.get(cotaSuperior).grado;
-						break;
 					}
-					gradoActual = this.nodos.get(cotaSuperior).grado;
-				}
 
-				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
-				j = cotaSuperior;
+					Collections.shuffle(this.nodos.subList(j, cotaSuperior));
+					j = cotaSuperior;
+				}
 			}
 
 			this.colorear();
@@ -218,13 +219,12 @@ public class GrafoNPND {
 		// probador.validarSolucion();
 	}
 
-	public void colorearWheelsPower(int cantidadDeVecesACorrer) throws FileNotFoundException {
+	public void colorearWheelsPower(int cantidadDeVecesACorrer, boolean mezclar) throws FileNotFoundException {
 		this.cantidadDeColoresCorridaActual = 0;
 		this.cantidadMejorDeColores = 0;
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		this.mejorSolucion = new int[this.cantidadDeNodos];
-
 
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.sort(nodos, new Comparator<Nodo>() {
@@ -234,24 +234,26 @@ public class GrafoNPND {
 				}
 			});
 
-			int cotaSuperior = 0;
-			int gradoActual = 0;
-			int gradoAnterior = 0;
+			if (mezclar) {
+				int cotaSuperior = 0;
+				int gradoActual = 0;
+				int gradoAnterior = 0;
 
-			for (int j = 0; j < this.nodos.size(); j++) {
-				gradoAnterior = gradoActual = this.nodos.get(j).grado;
-				while (gradoAnterior == gradoActual) {
-					cotaSuperior++;
-					if (cotaSuperior >= this.nodos.size()) {
-						cotaSuperior = this.nodos.size() - 1;
+				for (int j = 0; j < this.nodos.size(); j++) {
+					gradoAnterior = gradoActual = this.nodos.get(j).grado;
+					while (gradoAnterior == gradoActual) {
+						cotaSuperior++;
+						if (cotaSuperior >= this.nodos.size()) {
+							cotaSuperior = this.nodos.size() - 1;
+							gradoActual = this.nodos.get(cotaSuperior).grado;
+							break;
+						}
 						gradoActual = this.nodos.get(cotaSuperior).grado;
-						break;
 					}
-					gradoActual = this.nodos.get(cotaSuperior).grado;
-				}
 
-				Collections.shuffle(this.nodos.subList(j, cotaSuperior));
-				j = cotaSuperior;
+					Collections.shuffle(this.nodos.subList(j, cotaSuperior));
+					j = cotaSuperior;
+				}
 			}
 
 			this.colorear();
