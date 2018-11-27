@@ -101,13 +101,15 @@ public class GrafoNPND {
 //	}
 
 	public void colorear() {
-		int color = 0;
+		int color;
 		int colorMax = 0;
+		
+		for(Nodo n: this.nodos) {
+			n.pintar(0);//despinto todo
+		}
 
 		for (Nodo n : this.nodos) {
-			color = 0;
-			// Lo despinto
-			n.pintar(0);
+			color = 1;
 
 			// Busco con qu� color pintarlo
 			for (int j = 0; j < this.cantidadDeNodos; j++) {
@@ -151,6 +153,8 @@ public class GrafoNPND {
 		this.cantidadMejorDeColores = 0;
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
+		
+		
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(this.nodos);
 			this.colorear();
@@ -169,7 +173,9 @@ public class GrafoNPND {
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 
+		
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
+			
 			Collections.sort(nodos, new Comparator<Nodo>() {
 				@Override
 				public int compare(Nodo n1, Nodo n2) {
@@ -177,7 +183,6 @@ public class GrafoNPND {
 				}
 			});
 
-			Collections.shuffle(nodos);
 			int cotaSuperior = 0;
 			int gradoActual = 0;
 			int gradoAnterior = 0;
@@ -220,7 +225,6 @@ public class GrafoNPND {
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		this.mejorSolucion = new int[this.cantidadDeNodos];
 
-		Collections.shuffle(nodos);
 
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.sort(nodos, new Comparator<Nodo>() {
