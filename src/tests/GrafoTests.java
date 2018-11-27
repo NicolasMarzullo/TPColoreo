@@ -36,6 +36,19 @@ public class GrafoTests {
 		gen.calcularParametrosDelGrafo();
 		System.out.println(gen);
 	}
+	
+	@Test
+	public void regularTest() {
+		Generador gen = new Regular(5, 4);
+		try {
+			gen.generar();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		gen.calcularParametrosDelGrafo();
+		System.out.println(gen);
+	}
+
 /*
 	@Test
 	public void regularTest() {
