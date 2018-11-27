@@ -20,19 +20,19 @@ public class App {
 				GrafoNPND grafoNPND40 = new GrafoNPND("600Nodos_40Ady");
 				
 				long t1 = System.currentTimeMillis();
-				grafoNPND40.colorearSecuencial(10000);
+				grafoNPND40.colorearSecuencial(50);
 				long t2 = System.currentTimeMillis();
 				System.out.println("Secuencial " + grafoNPND40.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Secuencial: " + (t2-t1));
 				
 				t1 = System.currentTimeMillis();
-				grafoNPND40.colorearMatula(10000,true);
+				grafoNPND40.colorearMatula(50);
 				t2 = System.currentTimeMillis();
 				System.out.println("Matula " + grafoNPND40.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Matula: " + (t2-t1));
 				
 				t1 = System.currentTimeMillis();
-				grafoNPND40.colorearWheelsPower(10000,true);
+				grafoNPND40.colorearWheelsPower(50);
 				t2 = System.currentTimeMillis();
 				System.out.println("Wheels Power " +  grafoNPND40.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Wheels Power: " + (t2-t1));
@@ -46,19 +46,19 @@ public class App {
 				//System.out.println(generador50.toString());
 				GrafoNPND grafoNPND60 = new GrafoNPND("600Nodos_60Ady");
 				t1 = System.currentTimeMillis();
-				grafoNPND60.colorearSecuencial(10000);
+				grafoNPND60.colorearSecuencial(50);
 				t2 = System.currentTimeMillis();
 				System.out.println("Secuencial " + grafoNPND60.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Secuencial: " + (t2-t1));
 				
 				t1 = System.currentTimeMillis();
-				grafoNPND60.colorearMatula(10000,true);
+				grafoNPND60.colorearMatula(50);
 				t2 = System.currentTimeMillis();
 				System.out.println("Matula " + grafoNPND60.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Matula: " + (t2-t1));
 				
 				t1 = System.currentTimeMillis();
-				grafoNPND60.colorearWheelsPower(10000,true);
+				grafoNPND60.colorearWheelsPower(50);
 				t2 = System.currentTimeMillis();				
 				System.out.println("Wheels Power " +  grafoNPND60.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Wheels Power: " + (t2-t1));
@@ -72,20 +72,20 @@ public class App {
 				//System.out.println(generador90.toString());
 				GrafoNPND grafoNPND90 = new GrafoNPND("600Nodos_90Ady");
 				t1 = System.currentTimeMillis();
-				grafoNPND90.colorearSecuencial(10000);
+				grafoNPND90.colorearSecuencial(50);
 				t2 = System.currentTimeMillis();				
 				System.out.println("Secuencial " + grafoNPND90.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Secuencial: " + (t2-t1));
 				
 				
 				t1 = System.currentTimeMillis();
-				grafoNPND90.colorearMatula(10000,true);
+				grafoNPND90.colorearMatula(50);
 				t2 = System.currentTimeMillis();				
 				System.out.println("Matula " + grafoNPND90.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Matula: " + (t2-t1));
 				
 				t1 = System.currentTimeMillis();
-				grafoNPND90.colorearWheelsPower(10000,true );
+				grafoNPND90.colorearWheelsPower(50);
 				t2 = System.currentTimeMillis();				
 				System.out.println("Wheels Power " +  grafoNPND90.cantidadMejorDeColores);
 				System.out.println("Tiempo en ms Wheels Power: " + (t2-t1));
@@ -104,9 +104,9 @@ public class App {
 				GrafoNPND grafoNPNDReg50 = new GrafoNPND("1000Nodos_50Ady");
 				grafoNPNDReg50.colorearSecuencial(1);
 				System.out.println("Secuencial " + grafoNPNDReg50.cantidadMejorDeColores);
-				grafoNPNDReg50.colorearMatula(1,false);
+				grafoNPNDReg50.colorearMatula(1);
 				System.out.println("Matula " + grafoNPNDReg50.cantidadMejorDeColores);
-				grafoNPNDReg50.colorearWheelsPower(1,false);
+				grafoNPNDReg50.colorearWheelsPower(1);
 				System.out.println("Wheels Power " +  grafoNPNDReg50.cantidadMejorDeColores);
 				
 				System.out.println("Regular 75 Adyacencia");
@@ -118,9 +118,9 @@ public class App {
 				GrafoNPND grafoNPNDReg75 = new GrafoNPND("1000Nodos_75Ady");
 				grafoNPNDReg75.colorearSecuencial(1);
 				System.out.println("Secuencial " + grafoNPNDReg75.cantidadMejorDeColores);
-				grafoNPNDReg75.colorearMatula(1,false);
+				grafoNPNDReg75.colorearMatula(1);
 				System.out.println("Matula " + grafoNPNDReg75.cantidadMejorDeColores);
-				grafoNPNDReg75.colorearWheelsPower(1,false);
+				grafoNPNDReg75.colorearWheelsPower(1);
 				System.out.println("Wheels Power " +  grafoNPNDReg75.cantidadMejorDeColores);
 
 				System.out.println("FIN GRAFOS REGULARES");
