@@ -20,7 +20,7 @@ public class ProgramaProbadorColoreo {
 		this.nodosColoreados = new int[this.numeroDeNodos];
 
 		for (int i = 0; i < this.numeroDeNodos; i++) {
-			this.nodosColoreados[i] = entrada.nextInt();
+			this.nodosColoreados[entrada.nextInt()] = entrada.nextInt();
 		}
 
 		for (int i = 0; i < this.numeroDeAristas; i++) {

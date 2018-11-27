@@ -25,8 +25,7 @@ public class GrafoNPND {
 	private int numeroDeCorridaMejorCantidadColores = 0;
 	private int[] resultadoDeCorrida;
 	private String nombreDeGrafo;
-	private int[] mejorSolucion;
-	private int[] nodosColoreados;
+	private List<Nodo> mejorSolucion;
 
 	public GrafoNPND(String path) throws FileNotFoundException {
 		File archivo = new File(path);
@@ -59,46 +58,6 @@ public class GrafoNPND {
 		}
 		entrada.close();
 	}
-
-//	public void colorear() {
-//		int cantNodosPintados = 0, colorActual = 1, j;
-//		boolean loPuedoPintarDelColorActual = true;
-//
-//		this.nodosColoreados = new int[this.cantidadDeNodos]; // SOLUCION
-//
-//		// Uso algoritmo que colorea todo lo que puede con un color
-//		while (cantNodosPintados != this.cantidadDeNodos) {
-//
-//			for (Nodo nodo : this.nodos) {
-//
-//				if (this.nodosColoreados[nodo.id] == 0) { // No quiero que recorra nodos que ya fueron pintados.
-//					j = 0;
-//					loPuedoPintarDelColorActual = true; // Corte de control, la primera vez siempre ingresa.
-//					while (j < this.nodosColoreados.length && loPuedoPintarDelColorActual) {
-//						if (this.matrizAdyacencia.get(nodo.id, j) == 1) {
-//							if (this.nodosColoreados[j] != colorActual) {
-//								loPuedoPintarDelColorActual = true;
-//							} else {
-//								loPuedoPintarDelColorActual = false;
-//							}
-//						}
-//						j++;
-//					}
-//				} else {
-//					loPuedoPintarDelColorActual = false;
-//				}
-//
-//				if (loPuedoPintarDelColorActual) {
-//					this.nodosColoreados[nodo.id] = colorActual;
-//					cantNodosPintados++;
-//				}
-//			}
-//
-//			colorActual++;// Ya di una vuelta
-//			loPuedoPintarDelColorActual = true;
-//		}
-//		this.cantidadDeColoresCorridaActual = colorActual - 1;
-//	}
 
 	public void colorear() {
 		int color;
@@ -133,8 +92,9 @@ public class GrafoNPND {
 		File archivo = new File(this.nombreDeGrafo + "_Solucion_" + algortimo);
 		PrintWriter salida = new PrintWriter(archivo);
 		salida.println(this.cantidadDeNodos + " " + this.cantidadDeAristas);
-		for (int i = 0; i < this.mejorSolucion.length; i++) {
-			salida.print(this.mejorSolucion[i] + " ");
+
+		for (Nodo n : this.mejorSolucion) {
+			salida.print(n.id + " " + n.color + " ");
 		}
 		salida.println();
 		salida.println();
@@ -153,6 +113,7 @@ public class GrafoNPND {
 		this.cantidadMejorDeColores = 0;
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
+		this.mejorSolucion = new ArrayList<>();
 
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.shuffle(this.nodos);
@@ -160,10 +121,16 @@ public class GrafoNPND {
 			if (this.cantidadDeColoresCorridaActual < this.cantidadMejorDeColores || this.cantidadMejorDeColores == 0) {
 				this.cantidadMejorDeColores = this.cantidadDeColoresCorridaActual;
 				this.numeroDeCorridaMejorCantidadColores = i + 1;
+				this.mejorSolucion.addAll(this.nodos);
 			}
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
 		this.generarEstadisticas("Secuencial");
+		// this.imprimirSolucion("Secuencial");
+		ProgramaProbadorColoreo probador = new ProgramaProbadorColoreo(
+				this.nombreDeGrafo + "_Solucion_" + "Secuencial");
+		probador.validarSolucion();
+
 	}
 
 	public void colorearMatula(int cantidadDeVecesACorrer, boolean mezclar) throws FileNotFoundException {
@@ -213,7 +180,7 @@ public class GrafoNPND {
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
 		this.generarEstadisticas("Matula");
-		// this.imprimirSolucion("Matula");
+		this.imprimirSolucion("Matula");
 		// ProgramaProbadorColoreo probador = new
 		// ProgramaProbadorColoreo(this.nombreDeGrafo + "_Solucion_" + "Matula");
 		// probador.validarSolucion();
@@ -224,7 +191,7 @@ public class GrafoNPND {
 		this.cantidadMejorDeColores = 0;
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
-		this.mejorSolucion = new int[this.cantidadDeNodos];
+		this.mejorSolucion = new ArrayList<>();
 
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.sort(nodos, new Comparator<Nodo>() {
@@ -261,11 +228,15 @@ public class GrafoNPND {
 			if (this.cantidadDeColoresCorridaActual < this.cantidadMejorDeColores || this.cantidadMejorDeColores == 0) {
 				this.cantidadMejorDeColores = this.cantidadDeColoresCorridaActual;
 				this.numeroDeCorridaMejorCantidadColores = i + 1;
-				this.mejorSolucion = this.nodosColoreados;
+//				this.mejorSolucion = this.nodosColoreados;
 			}
 			this.resultadoDeCorrida[this.cantidadDeColoresCorridaActual - 1]++;
 		}
 		this.generarEstadisticas("WheelsPower");
+		// this.imprimirSolucion("WheelsPower");
+		ProgramaProbadorColoreo probador = new ProgramaProbadorColoreo(
+				this.nombreDeGrafo + "_Solucion_" + "WheelsPower");
+		probador.validarSolucion();
 	}
 
 	public void generarEstadisticas(String algoritmo) throws FileNotFoundException {
