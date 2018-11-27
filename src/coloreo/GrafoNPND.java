@@ -104,18 +104,14 @@ public class GrafoNPND {
 		int color = 0;
 		int colorMax = 0;
 
-		// Lo despinto
 		for (Nodo n : this.nodos) {
+			color = 0;
+			// Lo despinto
 			n.pintar(0);
-		}
-
-		for (Nodo n : this.nodos) {
-			color = 1;
 
 			// Busco con qu� color pintarlo
 			for (int j = 0; j < this.cantidadDeNodos; j++) {
-				if (this.matrizAdyacencia.get(n.id, j) == 1 && this.nodos.get(j).color == color
-						&& this.nodos.get(j).color != 0) {
+				if (this.matrizAdyacencia.get(n.id, this.nodos.get(j).id) == 1 && this.nodos.get(j).color == color) {
 					color++;
 					j = -1; // Vuelvo a recorrer porque quizas este color lo tiene algun otro nodo
 				}
@@ -128,7 +124,7 @@ public class GrafoNPND {
 			}
 		}
 
-		this.cantidadDeColoresCorridaActual = colorMax;
+		this.cantidadDeColoresCorridaActual = colorMax + 1;
 	}
 
 	public void imprimirSolucion(String algortimo) throws FileNotFoundException {
@@ -156,7 +152,7 @@ public class GrafoNPND {
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
-			Collections.shuffle(nodos);
+			Collections.shuffle(this.nodos);
 			this.colorear();
 			if (this.cantidadDeColoresCorridaActual < this.cantidadMejorDeColores || this.cantidadMejorDeColores == 0) {
 				this.cantidadMejorDeColores = this.cantidadDeColoresCorridaActual;
@@ -172,7 +168,6 @@ public class GrafoNPND {
 		this.cantidadMejorDeColores = 0;
 		this.numeroDeCorridaMejorCantidadColores = 0;
 		this.resultadoDeCorrida = new int[this.cantidadDeNodos];
-		
 
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.sort(nodos, new Comparator<Nodo>() {
@@ -226,7 +221,7 @@ public class GrafoNPND {
 		this.mejorSolucion = new int[this.cantidadDeNodos];
 
 		Collections.shuffle(nodos);
-		
+
 		for (int i = 0; i < cantidadDeVecesACorrer; i++) {
 			Collections.sort(nodos, new Comparator<Nodo>() {
 				@Override
@@ -234,7 +229,7 @@ public class GrafoNPND {
 					return n2.grado - n1.grado;
 				}
 			});
-			
+
 			int cotaSuperior = 0;
 			int gradoActual = 0;
 			int gradoAnterior = 0;
