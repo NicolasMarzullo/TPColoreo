@@ -112,12 +112,12 @@ public class GrafoNPND {
 		for (Nodo n : this.nodos) {
 			color = 1;
 
-			// Busco con qué color pintarlo
+			// Busco con quï¿½ color pintarlo
 			for (int j = 0; j < this.cantidadDeNodos; j++) {
 				if (this.matrizAdyacencia.get(n.id, j) == 1 && this.nodos.get(j).color == color
 						&& this.nodos.get(j).color != 0) {
 					color++;
-					j = 0; // Vuelvo a recorrer porque quizas este color lo tiene algun otro nodo
+					j = -1; // Vuelvo a recorrer porque quizas este color lo tiene algun otro nodo
 				}
 			}
 
